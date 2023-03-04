@@ -19,14 +19,12 @@ export class AuthService {
   register(email: string, password: string) {
     return from(createUserWithEmailAndPassword(this.auth, email, password));
   }
-  // isLogin() {
-  //   onAuthStateChanged(this.auth, (user: any) => {
-  //     if (user) {
-  //       return true;
-  //     } else {
-  //       return false;
-  //     }
-  //   });
-  //   return false;
-  // }
+  isLogin() {
+    const user = onAuthStateChanged(this.auth, (user: any) => {
+      if (user) {
+        console.log(user);
+      }
+    });
+    return user;
+  }
 }

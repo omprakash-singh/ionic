@@ -1,31 +1,38 @@
-import { Auth } from '@angular/fire/auth';
 import { Injectable } from '@angular/core';
+import { Auth } from '@angular/fire/auth';
 import {
-  CanActivate,
   ActivatedRouteSnapshot,
-  RouterStateSnapshot,
+  CanActivate,
   Router,
+  RouterStateSnapshot,
+  UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { onAuthStateChanged } from 'firebase/auth';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate {
+export class IsLoginGuard implements CanActivate {
   constructor(private router: Router, private auth: Auth) {}
   canActivate(
-    next: ActivatedRouteSnapshot,
+    route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): boolean | Observable<boolean> | Promise<boolean> {
+  ):
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree {
     return new Promise((resolve, reject) => {
       onAuthStateChanged(this.auth, (user) => {
         if (user) {
-          resolve(true);
+          // resolve(true);
+          console.log('User is logged in');
+          this.router.navigate(['']);
+          resolve(false);
         } else {
           console.log('User is not logged in');
-          this.router.navigate(['/login']);
-          resolve(false);
+          resolve(true);
         }
       });
     });
