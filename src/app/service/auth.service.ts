@@ -4,7 +4,7 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
 } from '@angular/fire/auth';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { from } from 'rxjs';
 
 @Injectable({
@@ -26,5 +26,9 @@ export class AuthService {
       }
     });
     return user;
+  }
+
+  logout() {
+    return from(signOut(this.auth));
   }
 }

@@ -6,6 +6,11 @@
           REGISTER
         </h1>
       </div>
+
+      <div *ngIf="error" class="alert alert-danger" role="alert">
+        User already register!
+      </div>
+
       <div class="row g-3">
         <div class="col">
           <input type="text" ngModel name="name" required minlength="3" class="form-control" placeholder="Name" />

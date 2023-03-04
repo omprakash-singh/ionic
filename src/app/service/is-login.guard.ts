@@ -26,12 +26,9 @@ export class IsLoginGuard implements CanActivate {
     return new Promise((resolve, reject) => {
       onAuthStateChanged(this.auth, (user) => {
         if (user) {
-          // resolve(true);
-          console.log('User is logged in');
           this.router.navigate(['']);
           resolve(false);
         } else {
-          console.log('User is not logged in');
           resolve(true);
         }
       });

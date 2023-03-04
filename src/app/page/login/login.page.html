@@ -6,6 +6,9 @@
                          LOGIN
                     </h1>
                </div>
+               <div *ngIf="error" class="alert alert-danger" role="alert">
+                    Incorrect Email or Password!
+               </div>
                <div>
                     <input class="form-control" type="email" name="email" placeholder="Email" ngModel required email />
                </div>
