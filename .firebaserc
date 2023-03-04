@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ionic-ff938": {
+      "hosting": {
+        "app": [
+          "ionic-ff938"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ionic-ff938"
+  }
+}

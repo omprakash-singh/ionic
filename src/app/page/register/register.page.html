@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="contain p-5 card shadow-lg">
+    <form (ngSubmit)="onRegister(f)" #f="ngForm">
+      <div>
+        <h1>
+          REGISTER
+        </h1>
+      </div>
+      <div class="row g-3">
+        <div class="col">
+          <input type="text" ngModel name="name" required minlength="3" class="form-control" placeholder="Name" />
+        </div>
+        <div class="col">
+          <input type="email" ngModel name="email" required email class="form-control" placeholder="Email">
+        </div>
+      </div>
+      <div>
+        <input class="form-control my-2" ngModel type="password" name="password" placeholder="Password" ngModel required
+          minlength="6" />
+      </div>
+      <div>
+        <input class="form-control my-2" ngModel type="password" name="confirm_password" placeholder="confirm Password"
+          ngModel required minlength="6" />
+      </div>
+      <div>
+        <button [disabled]="!f.valid || !(f.value.password === f.value.confirm_password)" class="btn btn-success w-100"
+          type="submit">REGISTER</button>
+      </div>
+    </form>
+    <hr>
+    <div class="btn-group-other">
+      <div>
+        <button [routerLink]="['/login']" class="btn w-100 btn-outline-secondary">
+          Login Account
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
